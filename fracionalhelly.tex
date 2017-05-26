@@ -1,0 +1,369 @@
+\documentclass[11pt, fleqn]{article}
+\usepackage[english]{babel}
+
+\usepackage[lmargin=1.1in,rmargin=1.1in,bottom=1.3in,top=1.3in,
+twoside=False]{geometry}
+
+\usepackage{relsize,xspace}
+ \usepackage{xcolor}
+ \usepackage{mathtools}
+ \usepackage{todonotes}
+ \usepackage{comment}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{refcount}
+\usepackage{wrapfig}
+
+\usepackage{marginnote}
+
+
+\definecolor{blue}{rgb}{0.1,0.2,0.5}
+\definecolor{brown}{rgb}{0.6,0.6,0.2}
+\usepackage[ocgcolorlinks, linkcolor={blue}, citecolor={brown}]{hyperref}
+
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{cleveref}
+
+
+\crefformat{page}{#2page~#1#3}%
+\Crefformat{page}{#2Page~#1#3}%
+\crefformat{equation}{#2(#1)#3}%
+\Crefformat{equation}{#2(#1)#3}%
+\crefformat{figure}{#2Figure~#1#3}%
+\Crefformat{figure}{#2Figure~#1#3}%
+\crefformat{section}{#2Section~#1#3}
+\Crefformat{section}{#2Section~#1#3}
+\crefformat{chapter}{#2Chapter~#1#3}
+\Crefformat{chapter}{#2Chapter~#1#3}
+\crefformat{chapter*}{#2Chapter~#1#3}
+\Crefformat{chapter*}{#2Chapter~#1#3}
+\crefformat{part}{#2Part~#1#3}
+\Crefformat{part}{#2Part~#1#3}
+\crefformat{enumi}{#2(#1)#3}
+\Crefformat{enumi}{#2(#1)#3}
+
+\usepackage{enumerate}
+
+\usepackage{latexsym}
+
+% BEGIN ntheorem configuration
+
+\theoremnumbering{arabic}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theorembodyfont{\itshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremseparator{.}
+
+\newtheorem{theorem}{Theorem}
+\crefformat{theorem}{#2Theorem~#1#3}
+\Crefformat{theorem}{#2Theorem~#1#3}
+\renewcommand{\setminus}{-}
+\newcommand{\newtheoremwithcrefformat}[2]{%
+  \newtheorem{#1}[lemma]{#2}%
+  \crefformat{#1}{##2\MakeUppercase#1~##1##3}%
+  \Crefformat{#1}{##2\MakeUppercase#1~##1##3}%
+}
+\newcommand{\newseptheoremwithcrefformat}[2]{%
+  \newtheorem{#1}{#2}%
+  \crefformat{#1}{##2\MakeUppercase#1~##1##3}%
+  \Crefformat{#1}{##2\MakeUppercase#1~##1##3}%
+}
+
+\newseptheoremwithcrefformat{lemma}{Lemma}
+\newtheoremwithcrefformat{proposition}{Proposition}
+\newtheoremwithcrefformat{observation}{Observation}
+\newtheoremwithcrefformat{conjecture}{Conjecture}
+\newtheoremwithcrefformat{corollary}{Corollary}
+\newseptheoremwithcrefformat{claim}{Claim}
+\theorembodyfont{\upshape}
+\newtheoremwithcrefformat{example}{Example}
+\newtheoremwithcrefformat{remark}{Remark}
+\newseptheoremwithcrefformat{definition}{Definition}
+
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\scshape}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem{proof}{Proof}
+
+\theoremsymbol{\ensuremath{\lrcorner}}
+\newtheorem{clproof}{Proof}
+
+% END ntheorem configuration
+
+\newcommand{\set}[1]{\{#1\}}
+\renewcommand{\subset}{\subseteq}
+
+%\setlength{\parskip}{0.1cm}
+%\setlength{\parindent}{0cm}
+%\setlength{\mathindent}{1cm}
+
+\newcommand{\wcol}{\mathrm{wcol}}
+\newcommand{\col}{\mathrm{col}}
+\newcommand{\adm}{\mathrm{adm}}
+\newcommand{\tw}{\mathrm{tw}}
+\newcommand{\WReach}{\mathrm{WReach}}
+\newcommand{\SReach}{\mathrm{SReach}}
+\newcommand{\wcolorder}{\sqsubseteq}
+\newcommand{\Oof}{\mathcal{O}}
+\newcommand{\CCC}{\mathcal{C}}
+\newcommand{\NNN}{\mathcal{N}}
+\newcommand{\WWW}{\mathcal{W}}
+\newcommand{\DDD}{\mathcal{D}}
+\newcommand{\PPP}{\mathcal{P}}
+\newcommand{\FFF}{\mathcal{F}}
+\newcommand{\GGG}{\mathcal{G}}
+\newcommand{\YYY}{\mathcal{Y}}
+\newcommand{\nei}{\mathrm{nei}}
+\renewcommand{\ker}{\mathrm{ker}}
+\newcommand{\core}{\mathrm{core}}
+
+\newcommand{\cutrk}{\mathrm{cutrk}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\rw}{\mathrm{rw}}
+
+
+\newcommand{\grad}{\nabla}
+\newcommand{\ds}{\mathbf{ds}}
+\newcommand{\cl}{\mathrm{cl}}
+\newcommand{\cst}{\alpha}
+
+\newcommand{\fnei}{f_{\nei}}
+\newcommand{\fwcol}{f_{\wcol}}
+\newcommand{\fker}{f_{\ker}}
+\newcommand{\fproj}{f_{\mathrm{proj}}}
+\newcommand{\fcl}{f_{\cl}}
+\newcommand{\fgrad}{f_{\grad}}
+\newcommand{\fpaths}{f_{\mathrm{pth}}}
+\newcommand{\fapx}{f_{\mathrm{apx}}}
+\newcommand{\fcore}{f_{\mathrm{core}}}
+\newcommand{\ffin}{f_{\mathrm{fin}}}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\newcommand{\suchthat}{ \colon }
+\newcommand{\sth}{ \colon }
+\newcommand{\ie}{i.e.\@ }
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tup}[1]{\bar{#1}}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\str}{\mathfrak}
+\newcommand{\strA}{\str{A}}
+\newcommand{\strB}{\str{B}}
+\newcommand{\FO}{\mathrm{FO}}
+\newcommand{\minor}{\preccurlyeq}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\indx}{\mathrm{index}}
+\renewcommand{\mid}{~:~}
+
+\newcommand{\profnum}{\widehat{\nu}}
+\newcommand{\projnum}{\mu}
+\newcommand{\projprof}{\widehat{\mu}}
+
+\newcommand{\abs}[1]{\ensuremath{\left\lvert#1\right\rvert}}
+
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\from}{\colon}
+
+\title{On the Hadwiger–Debrunner (p, q)-property and duality between
+packing and domination on nowhere dense graph classes}
+\author{Michał Pilipczuk \and Sebastian Siebertz \and Szymon Toruńczyk}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent 
+A family of sets $\FFF$ satisfies the Hadwiger-Debrunner $(p, q)$-property if among every 
+$p$ sets $F_1,\ldots, F_p$ of $\FFF$, there is $I\subseteq \{1,\ldots, p\}$ of order at least $q$ such that $\bigcap_{i\in I}F_i\neq \emptyset$. We prove that a monotone class $\CCC$ of graphs is nowhere 
+dense if and only if for every $r\in \N$ and $q\in \N$ there exists 
+$p\in N$ such that for every $G\in\CCC$, every set system
+$\NNN_r$ consisting of the $r$-neighborhoods of vertices of
+pairwise distance at most $2r$ has the $(p,q)$-property. 
+
+A transversal set (or hitting set) of $\FFF$ is a set of elements intersecting each $F\in \FFF$. The transversality $\tau$ of
+$\FFF$ is the minimum size of a transversal set. The packing 
+number $\nu$ of $\FFF$ is the maximum number of
+pairwise disjoint sets in $\FFF$.
+Using the $(p,q)$-property, Bousquet and Thomass\'e
+proved that there exists a function $f$ such that, for every 
+$r\in \N$, every graph~$G$ of distance-$r$ VC-dimension $d$ 
+satisfies $\tau_r\leq f(\nu_r,d)$, where $\tau_r$ is
+the transversality of the set of $r$-neighborhoods of
+vertices of $G$ and $\nu_r$ is its packing number. We prove
+that if $K_t\not\minor G$, then $G$ has distance-$r$ 
+VC-dimension at most $t-1$. 
+We then prove the
+dependence $\tau_r(G)\in \Oof(\nu_r^{1+\epsilon})$
+for every graph of a nowhere dense class and 
+every $\epsilon>0$. We prove that this bound is
+tight, by giving an example of a nowhere dense
+class such that $\tau_r(G)\in \Omega(\nu_r^{1+\epsilon})$. 
+\end{abstract}
+
+\section{The Hadwiger-Debrunner (p,q)-property}
+
+A family of sets $\FFF$ satisfies the Hadwiger-Debrunner 
+$(p, q)$-property if among every 
+$p$ sets $F_1,\ldots, F_p$ of $\FFF$, there is $I\subseteq \{1,\ldots, p\}$ of order at least $q$ such that $\bigcap_{i\in I}F_i\neq \emptyset$. 
+
+\begin{theorem}
+Let $\CCC$ be a monotone class of graphs. Then $\CCC$ 
+is nowhere 
+dense if and only if for every $r\in \N$ and $q\in \N$ there exists 
+$p\in N$ such that for every $G\in\CCC$, every set system
+$\NNN_r$ consisting of the $r$-neighborhoods of vertices of
+pairwise distance at most $2r$ has the $(p,q)$-property. 
+\end{theorem}
+\begin{proof}
+If $\CCC$ is nowhere dense, then it is uniformly quasi-wide, 
+say with margins $s:\N\rightarrow\N$ and $N:\N\times\N\rightarrow \N$. 
+Let $r\in \N$ and $q\in \N$ and let $p=N(q\cdot s(r),r)$. We claim that for every graph $G\in \CCC$, every set system
+$\NNN_r$ consisting of the $r$-neighborhoods of vertices of
+pairwise distance at most $2r$ has the $(p,q)$-property. 
+
+Let $A=\{v_1,\ldots, v_k\}\subseteq V(G)$ with pairwise distance
+at most $2r$, that is, $N_r(v_i)\cap N_r(v_j)\neq \emptyset$
+for all $1\leq i,j\leq k$. As $\CCC$ is uniformly quasi-wide, 
+we can delete from $G$ a set $S$ of at most $s(r)$ vertices
+such that there is a subset $B\subseteq A\setminus S$ of 
+size at least $q\cdot s(r)$ which is $r$-scattered. As $N_r(v_i)\cap N_r(v_j)\neq \emptyset$ in $G$, we have $S\cap N_r(v_i)\neq\emptyset$ for all $1\leq i\leq k$. Hence, there must be $s\in S$ with $s\in N_r(v)$ for at least $q$ elements $v\in B$.
+
+Conversely, the $2r$-subdivisions of complete graphs do not 
+have the $(p,3)$-property for any $p\in \N$. 
+\end{proof}
+
+\section{Distance VC-dimension}
+
+The $2$VC-dimension
+of a graph is the largest set which has a neighbour for each 
+subset of size $2$. Obviously, the $2$VC-dimension of $G$
+bounds its VC-dimension. 
+
+\begin{theorem}
+If $K_t\not\minor_rG$, then 
+$G^r$ has $2$VC-dimension at most $t-1$. 
+\end{theorem}
+
+\begin{proof}
+Assume there is a set $A=\{a_1,\ldots, a_t\}$ of size $t$ such that
+for all subsets $\{i,j\}\subseteq \{1,\ldots,t\}$ of size $2$ 
+there is an vertex $v_{ij}$ with 
+$N_r[v_{ij}]\cap A=\{a_i,a_j\}$.
+For each subset $\{i,j\}\subseteq \{1,\ldots,t\}$ of size $2$, choose a vertex $u_{ij}$ so that:
+\begin{enumerate}[(1)]
+\item\label{p:i} $\dist(v_{ij},u_{ij})+\dist(u_{ij},a_i)\leq r$;
+\item\label{p:j} $\dist(v_{ij},u_{ij})+\dist(u_{ij},a_j)\leq r$; and
+\item\label{p:min} subject to conditions \eqref{p:i} and \eqref{p:j}, $\max(\dist(u_{ij},a_i),\dist(u_{ij},a_j))$ is minimized.
+\end{enumerate}
+Observe that $u_{ij}$ is well-defined since setting $u_{ij}=v_{ij}$ satisfies the first two conditions.
+
+Let $P^i_{ij}$ and $P^j_{ij}$ be arbitrarily chosen shortest paths between $u_{ij}$ and~$a_i$, and between $u_{ij}$ and~$a_j$, respectively.
+We now establish some basic properties of paths $P^i_{ij}$ and $P^j_{ij}$ following from the choice of $u_{ij}$.
+
+\begin{claim}\label{cl:ineq}
+For each vertex $x$ on $P^i_{ij}$ we have $\dist(v_{ij},x)+\dist(x,a_i)\leq r$, and
+for each vertex $y$ on $P^j_{ij}$ we have $\dist(v_{ij},y)+\dist(y,a_j)\leq r$.
+\end{claim}
+\begin{clproof}
+We prove only the first statement for the second is symmetric.
+We have
+$$\dist(v_{ij},x)+\dist(x,a_{i})\leq \dist(v_{ij},u_{ij})+\dist(u_{ij},x)+\dist(x,a_{i})=\dist(v_{ij},u_{ij})+\dist(u_{ij},a_{i})\leq r,$$
+where the last equality is due to $x$ lying on a shortest path between $u_{ij}$ and $a_i$, and the last inequality is by condition~\eqref{p:i}.
+\end{clproof}
+
+\begin{claim}\label{cl:closer}
+Suppose $x$ is a vertex on $P^i_{ij}$ that is different from $u_{ij}$. Then $\dist(x,a_i)<\dist(x,a_j)$.
+Symmetrically, if $y$ lies on $P^j_{ij}$ and is different from $u_{ij}$, then $\dist(y,a_i)>\dist(y,a_j)$.
+Consequently, paths $P^i_{ij}$ and $P^j_{ij}$ share only one vertex, being the endpoint $u_{ij}$.
+\end{claim}
+\begin{clproof}
+We prove only the first claim, for the second is symmetric and the third directly follows from the first two.
+Suppose for contradiction that $\dist(x,a_i)\geq \dist(x,a_j)$.
+By \cref{cl:ineq} we have 
+$$\dist(v_{ij},x)+\dist(x,a_i)\leq r.$$
+On the other hand, since $\dist(x,a_i)\geq \dist(x,a_j)$, we have
+$$\dist(v_{ij},x)+\dist(x,a_j)\leq\dist(v_{ij},x)+\dist(x,a_i)\leq r.$$
+We conclude that $x$ satisfies conditions \eqref{p:i} and \eqref{p:j} from the definition of $u_{ij}$.
+However, since $x\neq u_{ij}$ and $x$ lies on a shortest path between $u_{ij}$ and $a_i$, we have $\dist(x,a_i)<\dist(u_{ij},a_i)$.
+Therefore,
+$$\dist(x,a_j)\leq \dist(x,a_i)<\dist(u_{ij},a_i)\leq \max(\dist(u_{ij},a_i),\dist(u_{ij},a_j)).$$
+Thus, the existence of $x$ contradicts condition \eqref{p:min} from the definition of $u_{ij}$.
+\end{clproof}
+
+Now, define paths $Q^i_{ij}$ and $Q^j_{ij}$ as follows:
+\begin{itemize}
+\item if $\dist(u_{ij},a_i)<\dist(u_{ij},a_j)$, then $Q^{i}_{ij}=P^{i}_{ij}$ and $Q^{j}_{ij}=P^{j}_{ij} - \{u_{ij}\}$;
+\item if $\dist(u_{ij},a_i)>\dist(u_{ij},a_j)$, then $Q^{i}_{ij}=P^{i}_{ij} - \{u_{ij}\}$ and $Q^{j}_{ij}=P^{j}_{ij}$;
+\item if $\dist(u_{ij},a_i)=\dist(u_{ij},a_j)$, then define $Q^i_{ij}$ and $Q^j_{ij}$ using any of the above.
+\end{itemize}
+Thus, by \cref{cl:closer} we have that paths $Q^{i}_{ij}$ and $Q^{j}_{ij}$ are disjoint. Moreover, for each vertex $x$ on $Q^{i}_{ij}$ we have $\dist(x,a_i)\leq \dist(x,a_j)$, and for each
+vertex $y$ on $Q^{j}_{ij}$ we have $\dist(y,a_i)\geq \dist(y,a_j)$.
+
+\begin{claim}\label{cl:intersect}
+Let $\{i,j\}$ and $\{i',j'\}$ be two different subsets of size $2$ of $\{1,\ldots,t\}$.
+Suppose that paths $Q^i_{ij}$ and $Q^{i'}_{i'j'}$ intersect.
+Then $i=i'$.
+\end{claim}
+\begin{clproof}
+Let $x$ be a vertex lying both on $Q^i_{ij}$ and $Q^{i'}_{i'j'}$. We first consider the corner case when $x=u_{ij}$.
+Suppose first that $\dist(v_{ij},x)\geq \dist(v_{i'j'},x)$. Then by \cref{cl:ineq} we have
+$$\dist(v_{i'j'},a_i)\leq \dist(v_{i'j'},x)+\dist(x,a_i)\leq \dist(v_{ij},x)+\dist(x,a_i)\leq r,$$
+and analogously $\dist(v_{i'j'},a_{j})\leq r$. However, we assumed that $a_{i'}$ and $a_{j'}$ are the only vertices of~$A$ that are at distance at most $r$ from $v_{i'j'}$, hence $\{i,j\}=\{i',j'\}$,
+a contradiction. Suppose then that $\dist(v_{ij},x)<\dist(v_{i'j'},x)$. 
+Then we have
+$$\dist(v_{ij},a_{i'})\leq \dist(v_{ij},x)+\dist(x,a_{i'})<\dist(v_{i'j'},x)+\dist(x,a_{i'})\leq r,$$
+where the last equality follows from \cref{cl:ineq}.
+Since $a_i$ and $a_j$ are the only vertices of $A$ that are at distance at most $r$ from $v_{ij}$, we infer that $i'\in \{i,j\}$. 
+If $i'=i$ then we would be done, so suppose $i'=j$.
+Since $x=u_{ij}$ and $x$ lies on $Q^i_{ij}$, by the definition of $Q^i_{ij}$ we have that $\dist(x,a_i)\leq \dist(x,a_j)=\dist(x,a_{i'})$. Therefore,
+$$\dist(v_{i'j'},a_i)\leq \dist(v_{i'j'},x)+\dist(x,a_{i})\leq \dist(v_{i'j'},x)+\dist(x,a_{i'})\leq r.$$
+where the last inequality follows from \cref{cl:ineq}.
+Again, we assumed that $a_{i'}$ and $a_{j'}$ are the only vertices of $A$ that are at distance at most $r$ from $v_{i'j'}$, so $i\in \{i',j'\}$. If $i=i'$ then we are done, and otherwise we have $i=j'$.
+Together with $i'=j$ this implies $\{i,j\}=\{i',j'\}$, a contradiction.
+
+The second corner case when $x=u_{i'j'}$ leads to a contradiction in a symmetric manner.
+
+We now move to the main case when $x\neq u_{ij}$ and $x\neq u_{i'j'}$.
+Then by \cref{cl:closer} we have $\dist(x,a_i)<\dist(x,a_j)$ and $\dist(x,a_{i'})<\dist(x,a_{j'})$.
+By symmetry, without loss of generality assume that $\dist(x,a_i)\leq \dist(x,a_{i'})$.
+Observe now that
+$$\dist(v_{i'j'},a_i)\leq \dist(v_{i'j'},x)+\dist(x,a_{i})\leq \dist(v_{i'j'},x)+\dist(x,a_{i'})\leq r,$$
+where the last inequality follows from \cref{cl:ineq}.
+Since we assumed that $a_{i'}$ and $a_{j'}$ are the only vertices of $A$ that are at distance at most $r$ from $v_{i'j'}$, we have $i\in \{i',j'\}$.
+However, it cannot happen that $i=j'$, because $\dist(x,a_{i'})<\dist(x,a_{j'})$ and $\dist(x,a_{i'})\geq \dist(x,a_{i})$. We conclude that $i=i'$.
+\end{clproof}
+
+For each $i\in \{1,2,\ldots,t\}$ we define $X_i$ to be the union of vertex sets of paths $Q^i_{ij}$ for $j\neq i$.
+Each of these paths has length at most $r$ and has $a_i$ as an endpoint, hence the subgraph induced by $X_i$ is connected and has radius at most $r$.
+By \cref{cl:intersect}, sets $X_i$ are pairwise disjoint. Finally, observe that for each $\{i,j\}\subseteq \{1,\ldots,t\}$ with $i\neq j$, there is an edge between a vertex of $Q^{i}_{ij}$ and a vertex of $Q^{j}_{ij}$.
+We conclude that $(X_i)_{i=1,\ldots,t}$ is a depth-$r$ minor model of $K_t$ in $G$, a contradiction.
+\end{proof}
+
+\section{On the duality between packing and domination in nowhere dense classes}
+
+Dvo\v{r}\'ak proved that $\tau_r\leq \wcol_r(G)^2\nu_r$ for all $r\in \N$. However, $\wcol_r(G)$ can be as large as $n^\epsilon$ in an 
+$n$-vertex graph from a nowhere dense class. However, we proved that we can compute a subgraph $G'$ of $G$ of order at most $\Oof(\tau_r^{1+\epsilon})$ and a set $Z\subseteq V(G')$ such that 
+the smallest $r$-dominating set for $Z$ in $G'$ has size exactly $\tau_r$. Furthermore, we observed earlier, that the relation $\tau_r\leq \wcol_r(G)^2\nu_r$ holds also set-wise, that is, the smallest $r$-dominating set for $Z$ is at most as large as a $2r$-independent subset of $Z$ multiplied by $\wcol_r(G)^2$. Now, as $G'$ is small, 
+we have $\wcol_r(G')\in \Oof(\tau_r^{1+\epsilon})$. 
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{ref} 
+
+\end{document}
